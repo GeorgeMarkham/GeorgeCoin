@@ -53,3 +53,29 @@ class Blockchain(object):
         # 1. Return the last block in the chain
         return self.chain[-1]
 
+    # **** PROOF OF WORK ALGORITHM **** #
+
+    def proof_of_work(self, last_proof):
+        # 1. Initialise proof
+        proof = 0
+        
+        # 2. Loop until proof a valid proof is found
+        while self.validate_proof(last_proof, proof) is False:
+            # 2-a. Increment proof each loop until the number satisfies the validation criteria defined in validate_proof
+            proof += 1
+        
+        return proof
+    
+    @staticmethod
+    def validate_proof(last_proof, proof):
+        # 1. Encode the 2 proofs together in a utf-8 string
+        guess = f'{last_proof}{proof}'.encode()
+         
+        #2. Hash the two proofs
+        guess_hash = hashlib.sha256(guess).hexdigest()
+
+        #3. Check to see if they satisfy the validation criteria and return boolean based on the outcome
+        return guess_hash[:4] == "0000"
+
+
+# ~~ FLASK STUFF ~~ #
