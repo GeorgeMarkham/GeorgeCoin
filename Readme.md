@@ -3,3 +3,7 @@
 
 **DO YOU EVEN CRYPTO BRO?**
 *MINE MY COIN PLS*
+
+---
+
+**PROPS TO THESE GUYS: https://hackernoon.com/learn-blockchains-by-building-one-117428612f46**
