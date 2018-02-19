@@ -42,11 +42,14 @@ class Blockchain(object):
     
     @staticmethod
     def generate_hash(block):
-        #Hash a block
-        pass
+        # 1. Get the block object as a utf-8 string
+        block_json_string = json.dumps(block, sort_keys=True).encode()
+        
+        # 2. Hash the block object using sha256
+        return hashlib.sha256(block_json_string).hexdigest()
     
     @property
     def last_block(self):
-        # Return the last block in the chain
-        pass
+        # 1. Return the last block in the chain
+        return self.chain[-1]
 
